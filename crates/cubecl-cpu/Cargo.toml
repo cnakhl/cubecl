@@ -6,6 +6,7 @@ edition.workspace = true
 keywords = ["cpu"]
 license.workspace = true
 name = "cubecl-cpu"
+publish = false
 readme.workspace = true
 repository = "https://github.com/tracel-ai/cubecl/tree/main/crates/cubecl-cpu"
 version.workspace = true

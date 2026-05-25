@@ -6,6 +6,7 @@ edition.workspace = true
 keywords = ["gpu", "compiler"]
 license.workspace = true
 name = "cubecl-spirv"
+publish = false
 readme.workspace = true
 repository = "https://github.com/tracel-ai/cubecl/tree/main/crates/cubecl-spirv"
 version.workspace = true

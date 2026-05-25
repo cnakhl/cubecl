@@ -15,15 +15,16 @@ This repository is the `tensor4all/cubecl` fork of upstream
 ## Upstream Tracking
 
 - Keep this fork as close to upstream CubeCL as possible.
-- Prefer merging upstream release tags used by `tenferro-rs`, starting with
-  `v0.10.0`, instead of tracking unstable upstream `main` by default.
+- Prefer merging upstream release branches used by `tenferro-rs`, starting
+  with `upstream/release/0.10`, instead of tracking unstable upstream `main`
+  by default.
 - Keep fork-only changes small, reviewable, and grouped by purpose:
   upstream merge commits, package-publication metadata, and tenferro-required
   implementation changes.
 - Do not rebrand source modules, Rust crate import names, directory names, or
   internal API paths unless required for publication. Rebranding source code
   makes future upstream merges harder.
-- When updating from upstream, merge the selected upstream tag first, then
+- When updating from upstream, merge the selected upstream release branch, then
   reapply or adjust the minimal `tensor4all` packaging delta.
 
 ## Crates.io Publishing Scope
