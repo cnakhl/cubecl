@@ -415,6 +415,16 @@ impl<D: Dialect> Unary<D> for Assign {
         if elem != input.elem() {
             match elem {
                 Elem::TF32 => write!(f, "nvcuda::wmma::__float_to_tf32({input})"),
+                // Complex targets have no `T(scalar)` constructor cast in the
+                // generated C++ (`cuDoubleComplex(uint32(0))` fails to compile).
+                // A real/integer scalar becomes the real part, imaginary 0,
+                // matching this file's Conj/Real/Imag lowering.
+                Elem::CF32 if !matches!(input.elem(), Elem::CF32 | Elem::CF64) => {
+                    write!(f, "make_cuFloatComplex({input}, 0.0)")
+                }
+                Elem::CF64 if !matches!(input.elem(), Elem::CF32 | Elem::CF64) => {
+                    write!(f, "make_cuDoubleComplex({input}, 0.0)")
+                }
                 elem => write!(f, "{elem}({input})"),
             }
         } else {
